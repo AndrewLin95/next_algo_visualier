@@ -1,6 +1,6 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import SiteLayout from '../Components/SiteLayout';
+import SiteLayout from '../components/SiteLayout';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
