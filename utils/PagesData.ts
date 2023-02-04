@@ -1,15 +1,17 @@
-export const PagesData = () => {
+import { IPageData } from "./models"
+
+export const pagesData: () => IPageData[] = () => {
   return (
     [
       {
-        img: null,
+        img: 'null',
         name: "Sorting Algorithm",
         link: "/sort",
       },
       {
-        img: null,
+        img: 'null',
         name: "Searching Algorithm",
-        lnk: "/search",
+        link: "/search",
       }
     ]
   )

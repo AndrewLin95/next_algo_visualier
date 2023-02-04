@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { PagesData } from '../utils/PagesData';
+import { pagesData } from '../utils/PagesData';
 
-const pageData = PagesData();
+const pageData = pagesData();
 
 const Home: NextPage = () => {
   console.log(pageData);
@@ -15,7 +15,9 @@ const Home: NextPage = () => {
 
       <div>
         {Object.entries(pageData).map(([key, value]) => (
-          <div key={key}>{value.name}</div>
+          <div key={key}>
+            <div>{value.name}</div>
+          </div>
         ))}
       </div>
     </div>
