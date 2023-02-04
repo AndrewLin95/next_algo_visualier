@@ -1,25 +1,16 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { pagesData } from '../utils/PagesData';
-
-const pageData = pagesData();
+import AlgoCards from './AlgoCards';
 
 const Home: NextPage = () => {
-  console.log(pageData);
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+    <div className="flex h-[calc(100vh-3.5rem)] flex-col items-center justify-center border-4 border-green-800">
       <Head>
         <title>Algo Visualizer</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div>
-        {Object.entries(pageData).map(([key, value]) => (
-          <div key={key}>
-            <div>{value.name}</div>
-          </div>
-        ))}
-      </div>
+      <AlgoCards />
     </div>
   );
 };

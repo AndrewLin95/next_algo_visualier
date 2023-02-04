@@ -5,13 +5,33 @@ export const pagesData: () => IPageData[] = () => {
     [
       {
         img: 'null',
-        name: "Sorting Algorithm",
+        name: "Sorting",
         link: "/sort",
       },
       {
         img: 'null',
-        name: "Searching Algorithm",
+        name: "Searching",
         link: "/search",
+      },
+      {
+        img: 'null',
+        name: 'Pathing',
+        link: '/path',
+      },
+      {
+        img: 'null',
+        name: 'Tree',
+        link: '/tree',
+      },
+      {
+        img: 'null',
+        name: 'Tree',
+        link: '/tree',
+      },
+      {
+        img: 'null',
+        name: 'Tree',
+        link: '/tree',
       }
     ]
   )
