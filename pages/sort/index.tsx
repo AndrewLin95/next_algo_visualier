@@ -13,6 +13,17 @@ const index: NextPage = () => {
     SortAlgoStates.Quick
   );
 
+  const [speedSliderValue, setSpeedSliderValue] = useState('2');
+  const [itemSliderValue, setItemSliderValue] = useState('55');
+
+  const handleSpeedSliderChange = (value: string) => {
+    setSpeedSliderValue(value);
+  };
+
+  const handleItemSliderChange = (value: string) => {
+    setItemSliderValue(value);
+  };
+
   return (
     <div className="flex h-[calc(100vh-3.5rem)] flex-col items-center justify-center">
       <Head>
@@ -24,8 +35,14 @@ const index: NextPage = () => {
         <AlgoSidebar
           sortAlgoStates={sortAlgoStates}
           setSortAlgoStates={setSortAlgoStates}
+          speedSliderValue={speedSliderValue}
+          handleSpeedSliderChange={handleSpeedSliderChange}
+          itemSliderValue={itemSliderValue}
+          handleItemSliderChange={handleItemSliderChange}
         />
-        <SortVisualizer />
+        <div className="p-12 w-full h-full">
+          {sortAlgoStates === SortAlgoStates.Quick && <SortVisualizer />}
+        </div>
       </div>
     </div>
   );
