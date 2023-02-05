@@ -41,7 +41,11 @@ const index: NextPage = () => {
           handleItemSliderChange={handleItemSliderChange}
         />
         <div className="p-12 w-full h-full">
-          {sortAlgoStates === SortAlgoStates.Quick && <SortVisualizer />}
+          <SortVisualizer
+            sortAlgoStates={sortAlgoStates}
+            speedSliderValue={speedSliderValue}
+            itemSliderValue={itemSliderValue}
+          />
         </div>
       </div>
     </div>
