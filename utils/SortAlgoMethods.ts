@@ -28,6 +28,8 @@ const sleep = (milliseconds: number) => {
 }
 
 export const QuickSort = async (dataset: number[], setDataset: React.Dispatch<React.SetStateAction<number[]>>): Promise<number[]> => {
+  // https://learnersbucket.com/examples/algorithms/quick-sort-iterative/
+  
   //Stack for storing start and end index
   let _dataset = dataset;
   let stack: any = [];
