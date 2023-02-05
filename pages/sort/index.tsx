@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SortAlgoStates } from '../../utils/SortAlgoUtil';
 
 import AlgoSidebar from '../../components/AlgoSidebar';
@@ -9,12 +9,16 @@ import SortVisualizer from './SortVisualizer';
 // https://www.geeksforgeeks.org/sorting-algorithms/
 
 const index: NextPage = () => {
+  useEffect(() => {
+    randomizedDataSet();
+  }, []);
+
   const [sortAlgoStates, setSortAlgoStates] = useState<SortAlgoStates>(
     SortAlgoStates.Quick
   );
-
   const [speedSliderValue, setSpeedSliderValue] = useState('2');
   const [itemSliderValue, setItemSliderValue] = useState('55');
+  const [dataset, setDataset] = useState<number[]>([]);
 
   const handleSpeedSliderChange = (value: string) => {
     setSpeedSliderValue(value);
@@ -22,6 +26,18 @@ const index: NextPage = () => {
 
   const handleItemSliderChange = (value: string) => {
     setItemSliderValue(value);
+  };
+
+  const randomizedDataSet = () => {
+    const targetNumItems = parseInt(itemSliderValue);
+    let newDataset = [];
+    let i = 0;
+    while (i < targetNumItems) {
+      const value = Math.floor(Math.random() * 1001);
+      newDataset.push(value);
+      i++;
+    }
+    setDataset(newDataset);
   };
 
   return (
@@ -39,13 +55,10 @@ const index: NextPage = () => {
           handleSpeedSliderChange={handleSpeedSliderChange}
           itemSliderValue={itemSliderValue}
           handleItemSliderChange={handleItemSliderChange}
+          randomizedDataSet={randomizedDataSet}
         />
         <div className="p-12 w-full h-full">
-          <SortVisualizer
-            sortAlgoStates={sortAlgoStates}
-            speedSliderValue={speedSliderValue}
-            itemSliderValue={itemSliderValue}
-          />
+          <SortVisualizer dataset={dataset} />
         </div>
       </div>
     </div>
