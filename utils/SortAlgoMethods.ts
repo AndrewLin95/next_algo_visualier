@@ -4,20 +4,22 @@ const swap = (_dataset: number[], left: number, right:number) =>  {
   _dataset[right] = temp;
 }
 
-const partitionHigh = (_dataset: number[], low: number, high:any) => {
+const partitionHigh = (_dataset: number[], start: number, end:any) => {
   //Pick the first element as pivot
-  let pivot = _dataset[high];
-  let i = low;
+  let pivot = _dataset[end];
+  let i = start;
   
   //Partition the array into two parts using the pivot
-  for(let j = low; j < high; j++){
-    if(_dataset[j] <= pivot){      
+  let j = start;
+  while(j < end) {
+    if (_dataset[j] <= pivot) {
       swap(_dataset, i, j);
       i++;
     }
+    j++;
   }
   
-  swap(_dataset, i, high);
+  swap(_dataset, i, end);
   
   //Return the pivot index
   return i;
@@ -29,7 +31,7 @@ const sleep = (milliseconds: number) => {
 
 export const QuickSort = async (dataset: number[], setDataset: React.Dispatch<React.SetStateAction<number[]>>, speedValue: number): Promise<number[]> => {
   // https://learnersbucket.com/examples/algorithms/quick-sort-iterative/
-  
+
   //Stack for storing start and end index
   let _dataset = dataset;
   let stack: any = [];
@@ -70,7 +72,8 @@ export const QuickSort = async (dataset: number[], setDataset: React.Dispatch<Re
 // ----------RECURSIVE----------
 
 // export const QuickSort = (dataset: number[]): number[] => {
-//   debugger;
+//   https://www.youtube.com/watch?v=P6XGSKO2RzI
+
 //   if (dataset.length === 1) {
 //     return dataset;
 //   }
