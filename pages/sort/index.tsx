@@ -5,6 +5,7 @@ import { SortAlgoStates } from '../../utils/SortAlgoUtil';
 
 import AlgoSidebar from '../../components/AlgoSidebar';
 import SortVisualizer from './SortVisualizer';
+import { QuickSort } from '../../utils/SortAlgoMethods';
 
 // https://www.geeksforgeeks.org/sorting-algorithms/
 
@@ -40,6 +41,12 @@ const index: NextPage = () => {
     setDataset(newDataset);
   };
 
+  const runAlgo = () => {
+    setDataset(QuickSort(dataset));
+  };
+
+  // TODO: Chooseable colors
+
   return (
     <div className="flex h-[calc(100vh-3.5rem)] flex-col items-center justify-center">
       <Head>
@@ -56,6 +63,7 @@ const index: NextPage = () => {
           itemSliderValue={itemSliderValue}
           handleItemSliderChange={handleItemSliderChange}
           randomizedDataSet={randomizedDataSet}
+          runAlgo={runAlgo}
         />
         <div className="p-12 w-full h-full">
           <SortVisualizer dataset={dataset} />
