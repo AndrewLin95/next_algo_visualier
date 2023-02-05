@@ -10,12 +10,17 @@ const SortVisualizer: FC<Props> = ({ dataset }) => {
     <div className="w-full h-full border border-emerald-400">
       <div className="flex flex-row justify-between w-full h-5/6">
         {Object.entries(dataset).map(([key, value]) => {
-          const customHeight = (value / 10).toString() + '%';
+          const customHeight = value / 10 + '%';
+          const customColorWeight = `rgba(106, 90, 205, ${value / 1000})`;
           return (
             <div
               key={key}
-              className={`border bg-black`}
-              style={{ height: customHeight, width: customWidth }}
+              className={`border`}
+              style={{
+                height: customHeight,
+                width: customWidth,
+                backgroundColor: customColorWeight
+              }}
             ></div>
           );
         })}
