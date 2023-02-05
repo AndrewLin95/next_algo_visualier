@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
 import React, { useState } from 'react';
-import { SortAlgoStates } from '../../utils/SortAlgoStates';
+import { SortAlgoStates } from '../../utils/SortAlgoUtil';
 
 import AlgoSidebar from '../../components/AlgoSidebar';
 import SortVisualizer from './SortVisualizer';

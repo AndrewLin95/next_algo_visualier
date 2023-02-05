@@ -5,10 +5,26 @@ export enum SortAlgoStates {
   Bubble = "Bubble",
 }
 
-export const SortAlgoTypes = 
+interface ISortAlgoTypes {
+  name: SortAlgoStates;
+  complexity: {
+    short: string,
+    long: string,
+  },
+  memory: {
+    short: string,
+    long: string,
+  },
+  method: {
+    short: string,
+    long: string,
+  }
+}
+
+export const SortAlgoTypes: ISortAlgoTypes[] = 
 [
   {
-    name: "Quick",
+    name: SortAlgoStates.Quick,
     complexity: {
       short: "nlogn",
       long: "description",
@@ -23,7 +39,7 @@ export const SortAlgoTypes =
     }
   },
   {
-    name: "Merge",
+    name: SortAlgoStates.Merge,
     complexity: {
       short: "nlogn",
       long: "description",
@@ -38,7 +54,7 @@ export const SortAlgoTypes =
     }
   },
   {
-    name: "Heap",
+    name: SortAlgoStates.Heap,
     complexity: {
       short: "nlogn",
       long: "description",
@@ -53,7 +69,7 @@ export const SortAlgoTypes =
     }
   },
   {
-    name: "Bubble",
+    name: SortAlgoStates.Bubble,
     complexity: {
       short: "n2",
       long: "description",
