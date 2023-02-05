@@ -1,23 +1,23 @@
-const swap = (arr:any, left:any, right:any) =>  {
-  const temp = arr[left]
-  arr[left] = arr[right]
-  arr[right] = temp;
+const swap = (_dataset: number[], left: number, right:number) =>  {
+  const temp = _dataset[left]
+  _dataset[left] = _dataset[right]
+  _dataset[right] = temp;
 }
 
-const partitionHigh = (arr: any, low: any, high:any) => {
+const partitionHigh = (_dataset: number[], low: number, high:any) => {
   //Pick the first element as pivot
-  let pivot = arr[high];
+  let pivot = _dataset[high];
   let i = low;
   
   //Partition the array into two parts using the pivot
   for(let j = low; j < high; j++){
-    if(arr[j] <= pivot){      
-      swap(arr, i, j);
+    if(_dataset[j] <= pivot){      
+      swap(_dataset, i, j);
       i++;
     }
   }
   
-  swap(arr, i, high);
+  swap(_dataset, i, high);
   
   //Return the pivot index
   return i;
@@ -27,7 +27,7 @@ const sleep = (milliseconds: number) => {
   return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
 
-export const QuickSort = async (dataset: number[], setDataset: React.Dispatch<React.SetStateAction<number[]>>): Promise<number[]> => {
+export const QuickSort = async (dataset: number[], setDataset: React.Dispatch<React.SetStateAction<number[]>>, speedValue: number): Promise<number[]> => {
   // https://learnersbucket.com/examples/algorithms/quick-sort-iterative/
   
   //Stack for storing start and end index
@@ -51,7 +51,7 @@ export const QuickSort = async (dataset: number[], setDataset: React.Dispatch<Re
 
     const tempDataset = [..._dataset]
     setDataset(tempDataset);
-    await sleep(100);
+    await sleep(speedValue);
     
     //Push sub array with less elements than pivot into the stack
     if(PI - 1 > x){

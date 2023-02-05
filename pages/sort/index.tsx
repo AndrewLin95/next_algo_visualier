@@ -17,8 +17,9 @@ const index: NextPage = () => {
   const [sortAlgoStates, setSortAlgoStates] = useState<SortAlgoStates>(
     SortAlgoStates.Quick
   );
-  const [speedSliderValue, setSpeedSliderValue] = useState('2');
-  const [itemSliderValue, setItemSliderValue] = useState('55');
+  const [speedSliderValue, setSpeedSliderValue] = useState('178');
+  const [speedValue, setSpeedValue] = useState<number>(20);
+  const [itemSliderValue, setItemSliderValue] = useState('150');
   const [dataset, setDataset] = useState<number[]>([]);
 
   const handleSpeedSliderChange = (value: string) => {
@@ -42,9 +43,13 @@ const index: NextPage = () => {
   };
 
   const runAlgo = async () => {
-    const sortedDataset = await QuickSort(dataset, setDataset);
+    const sortedDataset = await QuickSort(dataset, setDataset, speedValue);
     setDataset([...sortedDataset]);
   };
+
+  useEffect(() => {
+    setSpeedValue(202 - parseInt(speedSliderValue));
+  }, [speedSliderValue]);
 
   // TODO: Chooseable colors
 
