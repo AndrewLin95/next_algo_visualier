@@ -6,6 +6,7 @@ interface Props {
   itemSliderValue: string;
   handleItemSliderChange: (value: string) => void;
   randomizedDataSet: () => void;
+  runAlgo: () => void;
 }
 
 const AlgoSidebarControls: FC<Props> = ({
@@ -13,7 +14,8 @@ const AlgoSidebarControls: FC<Props> = ({
   handleSpeedSliderChange,
   itemSliderValue,
   handleItemSliderChange,
-  randomizedDataSet
+  randomizedDataSet,
+  runAlgo
 }) => {
   return (
     <div className="flex flex-col">
@@ -46,6 +48,15 @@ const AlgoSidebarControls: FC<Props> = ({
           onClick={() => randomizedDataSet()}
         >
           Generate New Dataset
+        </button>
+      </div>
+      <div className="px-3 gap-2">
+        <button
+          type="button"
+          className="w-full border border-indigo-800 bg-gray-800"
+          onClick={() => runAlgo()}
+        >
+          Run
         </button>
       </div>
     </div>

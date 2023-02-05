@@ -41,8 +41,9 @@ const index: NextPage = () => {
     setDataset(newDataset);
   };
 
-  const runAlgo = () => {
-    setDataset(QuickSort(dataset));
+  const runAlgo = async () => {
+    const sortedDataset = await QuickSort(dataset, setDataset);
+    setDataset([...sortedDataset]);
   };
 
   // TODO: Chooseable colors
