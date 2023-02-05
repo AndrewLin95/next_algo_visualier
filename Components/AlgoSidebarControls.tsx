@@ -1,17 +1,20 @@
-import { useState } from 'react';
+import { FC } from 'react';
 
-const AlgoSidebarControls = () => {
-  const [speedSliderValue, setSpeedSliderValue] = useState('2');
-  const [itemSliderValue, setItemSliderValue] = useState('50');
+interface Props {
+  speedSliderValue: string;
+  handleSpeedSliderChange: (value: string) => void;
+  itemSliderValue: string;
+  handleItemSliderChange: (value: string) => void;
+  randomizedDataSet: () => void;
+}
 
-  const handleSpeedSliderChange = (value: string) => {
-    setSpeedSliderValue(value);
-  };
-
-  const handleItemSliderChange = (value: string) => {
-    setItemSliderValue(value);
-  };
-
+const AlgoSidebarControls: FC<Props> = ({
+  speedSliderValue,
+  handleSpeedSliderChange,
+  itemSliderValue,
+  handleItemSliderChange,
+  randomizedDataSet
+}) => {
   return (
     <div className="flex flex-col">
       <div className="flex flex-row px-3 gap-2">
@@ -35,6 +38,15 @@ const AlgoSidebarControls = () => {
           max="100"
           value={itemSliderValue}
         />
+      </div>
+      <div className="px-3 gap-2">
+        <button
+          type="button"
+          className="w-full border border-indigo-800 bg-gray-800"
+          onClick={() => randomizedDataSet()}
+        >
+          Generate New Dataset
+        </button>
       </div>
     </div>
   );
