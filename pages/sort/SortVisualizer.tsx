@@ -5,9 +5,21 @@ interface Props {
 }
 
 const SortVisualizer: FC<Props> = ({ dataset }) => {
+  const customWidth = (100 / dataset.length).toString() + '%';
   return (
     <div className="w-full h-full border border-emerald-400">
-      <div>CONTENT</div>
+      <div className="flex flex-row justify-between w-full h-5/6">
+        {Object.entries(dataset).map(([key, value]) => {
+          const customHeight = (value / 10).toString() + '%';
+          return (
+            <div
+              key={key}
+              className={`border bg-black`}
+              style={{ height: customHeight, width: customWidth }}
+            ></div>
+          );
+        })}
+      </div>
     </div>
   );
 };
