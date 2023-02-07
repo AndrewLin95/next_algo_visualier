@@ -18,7 +18,8 @@ interface ISortAlgoTypes {
   method: {
     short: string,
     long: string,
-  }
+  },
+  preferredType: string
 }
 
 export const SortAlgoTypes: ISortAlgoTypes[] = 
@@ -36,7 +37,8 @@ export const SortAlgoTypes: ISortAlgoTypes[] =
     method: {
       short: "Partitioning",
       long: "description,"
-    }
+    }, 
+    preferredType: "Recursion",
   },
   {
     name: SortAlgoStates.Merge,
@@ -51,7 +53,8 @@ export const SortAlgoTypes: ISortAlgoTypes[] =
     method: {
       short: "Merging",
       long: "description",
-    }
+    },
+    preferredType: "Recursion",
   },
   {
     name: SortAlgoStates.Heap,
@@ -66,7 +69,8 @@ export const SortAlgoTypes: ISortAlgoTypes[] =
     method: {
       short: "Selection",
       long: "description",
-    }
+    },
+    preferredType: "Recursion",
   },
   {
     name: SortAlgoStates.Bubble,
@@ -81,6 +85,7 @@ export const SortAlgoTypes: ISortAlgoTypes[] =
     method: {
       short: "Exchanging",
       long: "description",
-    }
+    },
+    preferredType: "Recursion",
   }
 ]
