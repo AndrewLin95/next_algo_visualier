@@ -9,8 +9,8 @@ interface Props {
   handleSpeedSliderChange: (value: string) => void;
   itemSliderValue: string;
   handleItemSliderChange: (value: string) => void;
-  randomizedDataSet: () => void;
   runAlgo: () => void;
+  setDataset: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
 const AlgoSidebar: FC<Props> = ({
@@ -20,8 +20,8 @@ const AlgoSidebar: FC<Props> = ({
   handleSpeedSliderChange,
   itemSliderValue,
   handleItemSliderChange,
-  randomizedDataSet,
-  runAlgo
+  runAlgo,
+  setDataset
 }) => {
   const handleAlgoTypeClick = (type: SortAlgoStates) => {
     setSortAlgoStates(type);
@@ -39,8 +39,8 @@ const AlgoSidebar: FC<Props> = ({
                 handleSpeedSliderChange={handleSpeedSliderChange}
                 itemSliderValue={itemSliderValue}
                 handleItemSliderChange={handleItemSliderChange}
-                randomizedDataSet={randomizedDataSet}
                 runAlgo={runAlgo}
+                setDataset={setDataset}
               />
             )}
           </div>

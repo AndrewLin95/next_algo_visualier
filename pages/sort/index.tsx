@@ -2,6 +2,7 @@ import { NextPage } from 'next';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import { SortAlgoStates } from '../../utils/SortAlgoUtil';
+import { randomizeDataSet } from '../../utils/randomizeDataSet';
 
 import AlgoSidebar from '../../components/AlgoSidebar';
 import SortVisualizer from './SortVisualizer';
@@ -11,7 +12,8 @@ import { QuickSort } from '../../utils/SortAlgoMethods';
 
 const index: NextPage = () => {
   useEffect(() => {
-    randomizedDataSet();
+    const newDataset = randomizeDataSet(itemSliderValue);
+    setDataset(newDataset);
   }, []);
 
   const [sortAlgoStates, setSortAlgoStates] = useState<SortAlgoStates>(
@@ -22,6 +24,11 @@ const index: NextPage = () => {
   const [itemSliderValue, setItemSliderValue] = useState('150');
   const [dataset, setDataset] = useState<number[]>([]);
 
+  // Natively, the slider bar goes from low to high. This inverses it and uses it for the algorithm
+  useEffect(() => {
+    setSpeedValue(202 - parseInt(speedSliderValue));
+  }, [speedSliderValue]);
+
   const handleSpeedSliderChange = (value: string) => {
     setSpeedSliderValue(value);
   };
@@ -30,26 +37,10 @@ const index: NextPage = () => {
     setItemSliderValue(value);
   };
 
-  const randomizedDataSet = () => {
-    const targetNumItems = parseInt(itemSliderValue);
-    let newDataset = [];
-    let i = 0;
-    while (i < targetNumItems) {
-      const value = Math.floor(Math.random() * 1001);
-      newDataset.push(value);
-      i++;
-    }
-    setDataset(newDataset);
-  };
-
   const runAlgo = async () => {
     const sortedDataset = await QuickSort(dataset, setDataset, speedValue);
     setDataset([...sortedDataset]);
   };
-
-  useEffect(() => {
-    setSpeedValue(202 - parseInt(speedSliderValue));
-  }, [speedSliderValue]);
 
   // TODO: Chooseable colors
 
@@ -68,8 +59,8 @@ const index: NextPage = () => {
           handleSpeedSliderChange={handleSpeedSliderChange}
           itemSliderValue={itemSliderValue}
           handleItemSliderChange={handleItemSliderChange}
-          randomizedDataSet={randomizedDataSet}
           runAlgo={runAlgo}
+          setDataset={setDataset}
         />
         <div className="p-12 w-full h-full">
           <SortVisualizer dataset={dataset} />
