@@ -5,7 +5,7 @@ export enum SortAlgoStates {
   Bubble = "Bubble",
 }
 
-interface ISortAlgoTypes {
+interface SortAlgoMetaData {
   name: SortAlgoStates;
   complexity: {
     short: string,
@@ -22,7 +22,7 @@ interface ISortAlgoTypes {
   preferredType: string
 }
 
-export const SortAlgoTypes: ISortAlgoTypes[] = 
+export const SortAlgoTypes: SortAlgoMetaData[] = 
 [
   {
     name: SortAlgoStates.Quick,
