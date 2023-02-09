@@ -4,7 +4,7 @@ const swap = (_dataset: number[], left: number, right:number) =>  {
   _dataset[right] = temp;
 }
 
-const partitionHigh = (_dataset: number[], start: number, end:any) => {
+const partitionHigh = async (_dataset: number[], start: number, end:any, setDataset: React.Dispatch<React.SetStateAction<number[]>>, speedValue: number) => {
   //Pick the first element as pivot
   let pivot = _dataset[end];
   let i = start;
@@ -14,6 +14,10 @@ const partitionHigh = (_dataset: number[], start: number, end:any) => {
   while(j < end) {
     if (_dataset[j] <= pivot) {
       swap(_dataset, i, j);
+
+      const tempDataset = [..._dataset]
+      setDataset(tempDataset);
+      await sleep(speedValue);
       i++;
     }
     j++;
@@ -49,11 +53,7 @@ export const QuickSort = async (dataset: number[], setDataset: React.Dispatch<Re
     const { x, y } = stack.shift();
     
     //Partition the array along the pivot
-    const PI = partitionHigh(_dataset, x, y);
-
-    const tempDataset = [..._dataset]
-    setDataset(tempDataset);
-    await sleep(speedValue);
+    const PI = await partitionHigh(_dataset, x, y, setDataset, speedValue);
     
     //Push sub array with less elements than pivot into the stack
     if(PI - 1 > x){

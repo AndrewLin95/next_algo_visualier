@@ -32,7 +32,7 @@ const AlgoSidebarControls: FC<Props> = ({
           onChange={(value) => handleSpeedSliderChange(value.target.value)}
           type="range"
           min="2"
-          max="200"
+          max="50"
           value={speedSliderValue}
         />
       </div>

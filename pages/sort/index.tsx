@@ -19,14 +19,14 @@ const index: NextPage = () => {
   const [sortAlgoStates, setSortAlgoStates] = useState<SortAlgoStates>(
     SortAlgoStates.Quick
   );
-  const [speedSliderValue, setSpeedSliderValue] = useState('178');
-  const [speedValue, setSpeedValue] = useState<number>(20);
+  const [speedSliderValue, setSpeedSliderValue] = useState('25');
+  const [speedValue, setSpeedValue] = useState<number>(25);
   const [itemSliderValue, setItemSliderValue] = useState('150');
   const [dataset, setDataset] = useState<number[]>([]);
 
   // Natively, the slider bar goes from low to high. This inverses it and uses it for the algorithm
   useEffect(() => {
-    setSpeedValue(202 - parseInt(speedSliderValue));
+    setSpeedValue(52 - parseInt(speedSliderValue));
   }, [speedSliderValue]);
 
   const handleSpeedSliderChange = (value: string) => {
