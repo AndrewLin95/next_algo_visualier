@@ -58,7 +58,7 @@ const index: NextPage = () => {
           setDataset,
           speedValue
         );
-      // setDataset([...bubbleSortedDataset]);
+        setDataset([...bubbleSortedDataset]);
       default:
         break;
     }

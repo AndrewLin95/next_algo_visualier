@@ -31,7 +31,11 @@ const partitionHigh = async (_dataset: number[], start: number, end:any, setData
   return i;
 }
 
-export const QuickSort = async (dataset: number[], setDataset: React.Dispatch<React.SetStateAction<number[]>>, speedValue: number): Promise<number[]> => {
+export const QuickSort = async (
+  dataset: number[], 
+  setDataset: React.Dispatch<React.SetStateAction<number[]>>, 
+  speedValue: number,
+): Promise<number[]> => {
   // https://learnersbucket.com/examples/algorithms/quick-sort-iterative/
 
   //Stack for storing start and end index
