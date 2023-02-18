@@ -7,6 +7,7 @@ import { randomizeDataSet } from '../../utils/randomizeDataSet';
 import AlgoSidebar from '../../components/AlgoSidebar';
 import SortVisualizer from './SortVisualizer';
 import { QuickSort } from '../../utils/QuickSortMethods';
+import { BubbleSort } from '../../utils/BubbleSortMethods';
 
 // https://www.geeksforgeeks.org/sorting-algorithms/
 
@@ -32,11 +33,6 @@ const index: NextPage = () => {
     setItemSliderValue(value);
   };
 
-  const runAlgo = async () => {
-    const sortedDataset = await QuickSort(dataset, setDataset, speedValue);
-    setDataset([...sortedDataset]);
-  };
-
   useEffect(() => {
     handleGenerateNewDataset();
   }, []);
@@ -44,6 +40,28 @@ const index: NextPage = () => {
   const handleGenerateNewDataset = () => {
     const newDataset = randomizeDataSet(itemSliderValue);
     setDataset(newDataset);
+  };
+
+  const runAlgo = async () => {
+    switch (sortAlgoStates) {
+      case SortAlgoStates.Quick:
+        const quickSortedDataset = await QuickSort(
+          dataset,
+          setDataset,
+          speedValue
+        );
+        setDataset([...quickSortedDataset]);
+        break;
+      case SortAlgoStates.Bubble:
+        const bubbleSortedDataset = await BubbleSort(
+          dataset,
+          setDataset,
+          speedValue
+        );
+      // setDataset([...bubbleSortedDataset]);
+      default:
+        break;
+    }
   };
 
   // TODO: Chooseable colors

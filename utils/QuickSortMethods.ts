@@ -1,3 +1,5 @@
+import { sleep } from "./SortAlgoUtil";
+
 const swap = (_dataset: number[], left: number, right:number) =>  {
   const temp = _dataset[left]
   _dataset[left] = _dataset[right]
@@ -27,10 +29,6 @@ const partitionHigh = async (_dataset: number[], start: number, end:any, setData
   
   //Return the pivot index
   return i;
-}
-
-const sleep = (milliseconds: number) => {
-  return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
 
 export const QuickSort = async (dataset: number[], setDataset: React.Dispatch<React.SetStateAction<number[]>>, speedValue: number): Promise<number[]> => {
