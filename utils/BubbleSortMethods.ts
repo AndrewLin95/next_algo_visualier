@@ -4,7 +4,7 @@ export const BubbleSort = async (
   dataset: number[], 
   setDataset: React.Dispatch<React.SetStateAction<number[]>>, 
   speedValue: number
-) => {
+): Promise<number[]> => {
   let _dataset = dataset;
 
   let i = 0;
@@ -28,7 +28,7 @@ export const BubbleSort = async (
   return _dataset
 }
 
-export const BubbleSortNoSwaps = async (
+export const OptimizedBubbleSort = async (
   dataset: number[], 
   setDataset: React.Dispatch<React.SetStateAction<number[]>>, 
   speedValue: number
@@ -44,11 +44,11 @@ export const BubbleSortNoSwaps = async (
       if (_dataset[j] > _dataset[j + 1]) {
         // swap
         [_dataset[j], dataset[j + 1]] = [dataset[j + 1], dataset[j]]
-        noSwaps = false;
         // visualization
         const tempDataset = [..._dataset]
         setDataset(tempDataset)
         await sleep(speedValue)
+        noSwaps = false;
       }
       j++;
     }
@@ -58,6 +58,4 @@ export const BubbleSortNoSwaps = async (
   }
 
   return _dataset
-
-
 }

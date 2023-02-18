@@ -3,6 +3,7 @@ export enum SortAlgoStates {
   Merge = "Merge",
   Heap = "Heap",
   Bubble = "Bubble",
+  OptimizedBubble = "Optimized Bubble"
 }
 
 interface SortAlgoMetaData {
@@ -86,7 +87,23 @@ export const SortAlgoTypes: SortAlgoMetaData[] =
       short: "Exchanging",
       long: "description",
     },
-    preferredType: "Recursion",
+    preferredType: "Iterative",
+  },
+  {
+    name: SortAlgoStates.OptimizedBubble,
+    complexity: {
+      short: "n2",
+      long: "description",
+    },
+    memory: {
+      short: "1",
+      long: "description",
+    },
+    method: {
+      short: "Exchanging",
+      long: "description",
+    },
+    preferredType: "Iterative",
   }
 ]
 

@@ -7,7 +7,7 @@ import { randomizeDataSet } from '../../utils/randomizeDataSet';
 import AlgoSidebar from '../../components/AlgoSidebar';
 import SortVisualizer from './SortVisualizer';
 import { QuickSort } from '../../utils/QuickSortMethods';
-import { BubbleSort } from '../../utils/BubbleSortMethods';
+import { BubbleSort, OptimizedBubbleSort } from '../../utils/BubbleSortMethods';
 
 // https://www.geeksforgeeks.org/sorting-algorithms/
 
@@ -45,20 +45,12 @@ const index: NextPage = () => {
   const runAlgo = async () => {
     switch (sortAlgoStates) {
       case SortAlgoStates.Quick:
-        const quickSortedDataset = await QuickSort(
-          dataset,
-          setDataset,
-          speedValue
-        );
-        setDataset([...quickSortedDataset]);
+        await QuickSort(dataset, setDataset, speedValue);
         break;
       case SortAlgoStates.Bubble:
-        const bubbleSortedDataset = await BubbleSort(
-          dataset,
-          setDataset,
-          speedValue
-        );
-        setDataset([...bubbleSortedDataset]);
+        await BubbleSort(dataset, setDataset, speedValue);
+      case SortAlgoStates.OptimizedBubble:
+        await OptimizedBubbleSort(dataset, setDataset, speedValue);
       default:
         break;
     }
