@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { randomizeDataSet } from '../utils/randomizeDataSet';
 
 interface Props {
   speedSliderValue: string;
@@ -7,7 +6,7 @@ interface Props {
   itemSliderValue: string;
   handleItemSliderChange: (value: string) => void;
   runAlgo: () => void;
-  setDataset: React.Dispatch<React.SetStateAction<number[]>>;
+  handleGenerateNewDataset: () => void;
 }
 
 const AlgoSidebarControls: FC<Props> = ({
@@ -16,13 +15,8 @@ const AlgoSidebarControls: FC<Props> = ({
   itemSliderValue,
   handleItemSliderChange,
   runAlgo,
-  setDataset
+  handleGenerateNewDataset
 }) => {
-  const handleGenerateNewDataset = () => {
-    const newDataset = randomizeDataSet(itemSliderValue);
-    setDataset(newDataset);
-  };
-
   return (
     <div className="flex flex-col">
       <div className="flex flex-row px-3 gap-2">
