@@ -6,16 +6,11 @@ import { randomizeDataSet } from '../../utils/randomizeDataSet';
 
 import AlgoSidebar from '../../components/AlgoSidebar';
 import SortVisualizer from './SortVisualizer';
-import { QuickSort } from '../../utils/SortAlgoMethods';
+import { QuickSort } from '../../utils/QuickSortMethods';
 
 // https://www.geeksforgeeks.org/sorting-algorithms/
 
 const index: NextPage = () => {
-  useEffect(() => {
-    const newDataset = randomizeDataSet(itemSliderValue);
-    setDataset(newDataset);
-  }, []);
-
   const [sortAlgoStates, setSortAlgoStates] = useState<SortAlgoStates>(
     SortAlgoStates.Quick
   );
@@ -42,6 +37,15 @@ const index: NextPage = () => {
     setDataset([...sortedDataset]);
   };
 
+  useEffect(() => {
+    handleGenerateNewDataset();
+  }, []);
+
+  const handleGenerateNewDataset = () => {
+    const newDataset = randomizeDataSet(itemSliderValue);
+    setDataset(newDataset);
+  };
+
   // TODO: Chooseable colors
 
   return (
@@ -60,7 +64,7 @@ const index: NextPage = () => {
           itemSliderValue={itemSliderValue}
           handleItemSliderChange={handleItemSliderChange}
           runAlgo={runAlgo}
-          setDataset={setDataset}
+          handleGenerateNewDataset={handleGenerateNewDataset}
         />
         <div className="p-12 w-full h-full">
           <SortVisualizer dataset={dataset} />
