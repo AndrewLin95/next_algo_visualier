@@ -49,7 +49,16 @@ const index: NextPage = () => {
         await QuickSort(dataset, setDataset, speedValue);
         break;
       case SortAlgoStates.Merge:
-        const response = await MergeSort(dataset, [], setDataset, speedValue);
+        let offDataset = {
+          position: 'null',
+          tempArray: []
+        };
+        const response = await MergeSort(
+          dataset,
+          offDataset,
+          setDataset,
+          speedValue
+        );
         setDataset(response);
         break;
       case SortAlgoStates.Bubble:
