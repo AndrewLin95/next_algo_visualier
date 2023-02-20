@@ -74,7 +74,7 @@ export const QuickSort = async (
 // ----------RECURSIVE----------
 
 export const QuickSortRecursive = (dataset: number[]): number[] => {
-  https://www.youtube.com/watch?v=P6XGSKO2RzI
+  // https://www.youtube.com/watch?v=P6XGSKO2RzI
 
   if (dataset.length === 1) {
     return dataset;

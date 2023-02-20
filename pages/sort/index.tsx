@@ -8,6 +8,7 @@ import AlgoSidebar from '../../components/AlgoSidebar';
 import SortVisualizer from './SortVisualizer';
 import { QuickSort } from '../../utils/QuickSortMethods';
 import { BubbleSort, OptimizedBubbleSort } from '../../utils/BubbleSortMethods';
+import { MergeSort } from '../../utils/MergeSortMethods';
 
 // https://www.geeksforgeeks.org/sorting-algorithms/
 
@@ -47,10 +48,16 @@ const index: NextPage = () => {
       case SortAlgoStates.Quick:
         await QuickSort(dataset, setDataset, speedValue);
         break;
+      case SortAlgoStates.Merge:
+        const response = await MergeSort(dataset, [], setDataset, speedValue);
+        setDataset(response);
+        break;
       case SortAlgoStates.Bubble:
         await BubbleSort(dataset, setDataset, speedValue);
+        break;
       case SortAlgoStates.OptimizedBubble:
         await OptimizedBubbleSort(dataset, setDataset, speedValue);
+        break;
       default:
         break;
     }
